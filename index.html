@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Ambient Light Sensor</title>
+    <title>Light Sensor</title>
     <link href="https://fonts.googleapis.com/css?family=Catamaran:700" rel="stylesheet">
     <style>
       h1{
@@ -10,11 +10,11 @@
       }
       
       p{
-        font-size: 40px; 
+        font-size: 60px; 
       }
       
       #details{
-        font-size: 40px; 
+        font-size: 60px; 
         letter-spacing: -1px;
       }
       
@@ -24,9 +24,7 @@
           text-align: center;
           color: #8cabd9;
           background-color: #0a244d;
-
         }
-
        .brightLight{
           font-family: 'Catamaran', sans-serif;
           letter-spacing: -4px;
@@ -37,8 +35,9 @@
     </style>
   </head>
   <body class="brightLight">
-    <h1>Ambient Light Sensor</h1>
-    <p>Current Light Levels</p>
+    <h1>GRLX Light Sensor</h1>
+    <p>PPFD?</p>
+    
     <div id="details"></div>  
   </body>
   <script>
@@ -48,10 +47,9 @@
     if (window.AmbientLightSensor){
         try{
           const sensor = new AmbientLightSensor();
-
           // Detect changes in the light
           sensor.onreading = () => {
-            details.innerHTML = sensor.illuminance;
+            details.innerHTML = sensor.illuminance*0.03;
             
               // Read the light levels in lux 
               // < 50 is dark room
@@ -71,6 +69,6 @@
     } else {
       details.innerHTML = 'It looks like your browser doesnt support this feature'; 
     }
-
   </script>
+  
 </html>
